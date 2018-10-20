@@ -73,8 +73,19 @@ public double calcNetForceExertedByY(Planet[] stars){
       forceNetY = forceNetY + this.calcForceExertedByY(stars[i]);
     }
   }
-    return forceNetY;
+  return forceNetY;
 }
 
+public void update(double dt, double fx, double fy){
+  double ax = fx / this.mass;
+  double ay = fy / this.mass;
+
+  this.xxVel = this.xxVel + dt * ax;
+  this.yyVel = this.yyVel + dt * ay;
+
+  this.xxPos = this.xxPos + dt * this.xxVel;
+  this.yyPos = this.yyPos + dt * this.yyVel;
+
+}
 
 }
