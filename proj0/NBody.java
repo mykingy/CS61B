@@ -35,6 +35,13 @@ public class NBody{
     double unra = this.readRadius(filename);
     Plant[] pl = this.readPlanets(filename);
 
+    //draw the background
+
+    StdDraw.enableDoubleBuffering();
+    StdDraw.setScale(-unra, unra);
+    StdDraw.clear();
+
+
 
   }
 }
