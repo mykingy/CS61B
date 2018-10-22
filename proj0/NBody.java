@@ -33,7 +33,7 @@ public class NBody{
     double dt = Double.parseDouble(args[1]);
     String filename = args[2];
     double unra = this.readRadius(filename);
-    double pl = this.readPlanets(filename);
+    Plant[] pl = this.readPlanets(filename);
 
 
   }
