@@ -41,6 +41,8 @@ public class NBody{
     StdDraw.setScale(-unra, unra);
     StdDraw.clear();
 
+    StdDraw.picture(0, 0, "images/starfield.jpg");
+
 
 
   }
