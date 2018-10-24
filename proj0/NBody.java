@@ -32,8 +32,8 @@ public class NBody{
     double T = Double.parseDouble(args[0]);
     double dt = Double.parseDouble(args[1]);
     String filename = args[2];
-    double unra = this.readRadius(filename);
-    Plant[] pl = this.readPlanets(filename);
+    double unra = readRadius(filename);
+    Planet[] pl = readPlanets(filename);
 
     //draw the background
 
@@ -43,6 +43,11 @@ public class NBody{
 
     StdDraw.picture(0, 0, "images/starfield.jpg");
 
+    for(int i = 0; i < pl.length; i = i + 1){
+      pl[i].draw();
+    }
+
+    StdDraw.show();
 
 
   }

@@ -93,4 +93,9 @@ public void update(double dt, double fx, double fy){
 
 }
 
+public void draw(){
+  String path = "images/";
+  StdDraw.picture(this.xxPos, this.yyPos, path + this.imgFileName);
+}
+
 }
