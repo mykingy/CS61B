@@ -73,4 +73,23 @@ public class IntList {
        return L;
    }
    
+   public void addAdjacent() {
+	   IntList p = this;
+	   if (p == null) {
+		   return;
+	   }
+	   IntList s = p;
+	   while(s.rest != null) {
+		   if(s.first == s.rest.first) {
+			   s.first = s.first * 2;
+			   s.rest = s.rest.rest;
+			   s = p;
+			   break;
+		   }
+		   else {
+			   s = s.rest;
+		   }
+	   }
+	   
+   }
 }
