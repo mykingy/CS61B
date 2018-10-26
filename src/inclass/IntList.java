@@ -10,7 +10,8 @@ public class IntList {
 		System.out.println(L.size());
 		System.out.println(L.iterativesize());
 		System.out.println(L.get(1));
-		System.out.println(incrList(L, 3));
+		System.out.println(L.toString());
+		System.out.println(incrList(L, 3).toString());
 	}
 
 
@@ -61,35 +62,43 @@ public class IntList {
 		}
 
 	}
-	
-	
+
+
 	/** Returns an IntList identical to L, but with
-     * each element incremented by x. Not allowed to use
-     * the 'new' keyword. */
-   public static IntList dincrList(IntList L, int x) {
-	   if (L == null) return L;
-       L.first = L.first + x;
-       L.rest = dincrList(L.rest, x);
-       return L;
-   }
-   
-   public void addAdjacent() {
-	   IntList p = this;
-	   if (p == null) {
-		   return;
-	   }
-	   IntList s = p;
-	   while(s.rest != null) {
-		   if(s.first == s.rest.first) {
-			   s.first = s.first * 2;
-			   s.rest = s.rest.rest;
-			   s = p;
-			   break;
-		   }
-		   else {
-			   s = s.rest;
-		   }
-	   }
-	   
-   }
+	 * each element incremented by x. Not allowed to use
+	 * the 'new' keyword. */
+	public static IntList dincrList(IntList L, int x) {
+		if (L == null) return L;
+		L.first = L.first + x;
+		L.rest = dincrList(L.rest, x);
+		return L;
+	}
+
+	public void addAdjacent() {
+		IntList p = this;
+		if (p == null) {
+			return;
+		}
+		IntList s = p;
+		while(s.rest != null) {
+			if(s.first == s.rest.first) {
+				s.first = s.first * 2;
+				s.rest = s.rest.rest;
+				s = p;
+				break;
+			}
+			else {
+				s = s.rest;
+			}
+		}
+
+	}
+	
+	public String toString() {
+		String str = String.valueOf(first);
+		if (rest != null) {
+			str = str + " " + rest.toString();
+		}
+		return str;
+	}
 }
