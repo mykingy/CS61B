@@ -70,6 +70,18 @@ public class SLList {
 
 	}
 	
+	/** delete the first node of the list. */
+	public void deleteFirst() {
+		IntNode n = sentinel;
+		if(n.next != null) {
+			n.next = n.next.next;
+			size = size -1;
+		}
+		
+		else return;
+		
+	}
+	
 	public String toString() {
 		IntNode n = this.sentinel.next;
 		String str = String.valueOf(n.item);
@@ -85,6 +97,8 @@ public class SLList {
 		SLList L = new SLList(15);
 		L.addFirst(10);
 		L.addFirst(5);
+		System.out.println(L.toString());
+		L.deleteFirst();
 		System.out.println(L.toString());
 		
 			

@@ -2,25 +2,26 @@ package inclass;
 
 public class IntList {
 	public static void main(String[] args) {
-		IntList L = new IntList(15, null);
-		L = new IntList(10, L);
-		L = new IntList(5, L);
-		L = new IntList(22, L);
+		IntList L = new IntList(2, null);
+		L = new IntList(1, L);
 
 		System.out.println(L.size());
 		System.out.println(L.iterativesize());
-		System.out.println(L.get(1));
+		L.squareAdd(5);
 		System.out.println(L.toString());
-		System.out.println(incrList(L, 3).toString());
+		L.squareAdd(7);
+		System.out.println(L.toString());
 	}
 
 
 	public int first;
 	public IntList rest;
+	public int size;
 
 	public IntList(int f, IntList r) {
 		first = f;
 		rest = r;
+		size = 1;
 	}
 
 	/** Return the size of the list using recursion
@@ -76,9 +77,7 @@ public class IntList {
 
 	public void addAdjacent() {
 		IntList p = this;
-		if (p == null) {
-			return;
-		}
+		if (p == null) return;
 		IntList s = p;
 		while(s.rest != null) {
 			if(s.first == s.rest.first) {
@@ -92,6 +91,19 @@ public class IntList {
 			}
 		}
 
+	}
+	
+	/** Square each item in the list when insert one.*/
+	
+	public void squareAdd(int x) {
+		IntList p = this;
+		
+		while(p.rest!= null) {
+			p.rest = new IntList(p.first * p.first,p.rest);
+			p = p.rest.rest;
+		}
+		p.rest = new IntList(p.first * p.first, p.rest);
+		p.rest.rest = new IntList(x, null);
 	}
 	
 	public String toString() {
