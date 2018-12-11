@@ -13,6 +13,15 @@ public class SLList {
 			item = i;
 			next = n;
 		}
+		
+		public String toString() {
+			String str = String.valueOf(item);
+			if(next != null) {
+				str = str + " " + next.toString();
+			}
+			
+			return str;
+		}
 	}
 	
 	/* The first item (if it exists) is at sentinel.next. */
@@ -61,11 +70,24 @@ public class SLList {
 
 	}
 	
+	public String toString() {
+		IntNode n = this.sentinel.next;
+		String str = String.valueOf(n.item);
+		if (str != null) {
+			str = str + " " + n.next.toString();
+		}
+		return str;
+	}
+	
 	
 	public static void main(String[] args) {
 		/* Creates a list of one integer, namely 10 */
 		SLList L = new SLList(15);
 		L.addFirst(10);
 		L.addFirst(5);
+		System.out.println(L.toString());
+		
+			
+		}
 	}
-}
+
