@@ -81,7 +81,47 @@ public class SLList {
 		else return;
 		
 	}
-	
+
+	/** Takes in an integer x and inserts it at the given position.
+	 * If the position is after the end of the list, insert the new node at the end.
+	 */
+	public void insert(int item, int position){
+		if(sentinel.next == null || position == 0){
+			addFirst(item);
+			return;
+		}
+
+		IntNode currentNode = this.sentinel.next;
+		while(position > 1 && currentNode.next != null){
+			position --;
+			currentNode = currentNode.next;
+		}
+
+		IntNode newNode = new IntNode(item, currentNode.next);
+		currentNode.next = newNode;
+
+
+	}
+
+	/** Reverse the elements.
+	 * Using the existing IntNode (should not use "new").
+	 */
+	public void reverse(){
+
+		IntNode pre = null;
+		IntNode curr = sentinel.next;
+		while (curr != null){
+			IntNode temp = curr.next;
+			curr.next = pre;
+			pre = curr;
+			curr = temp;
+		}
+
+		sentinel.next = pre;
+
+
+	}
+
 	public String toString() {
 		IntNode n = this.sentinel.next;
 		String str = String.valueOf(n.item);
