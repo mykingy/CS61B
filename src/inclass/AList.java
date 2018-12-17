@@ -1,6 +1,6 @@
 package inclass;
 
-public class AList<E> {
+public class AList<E>{
 
     private E[] items;
     private int size;
@@ -58,5 +58,60 @@ public class AList<E> {
         items[size - 1] = null;
         size --;
         return x;
+    }
+
+
+    /** Inserts item into array arr at the given position.
+     * Destructively.
+     */
+    public static int[] insert(int[] arr, int item, int position){
+        int[] result = new int[arr.length + 1];
+        position = Math.min(arr.length, position);
+        for(int i = 0; i < position; i++){
+            result[i] = arr[i];
+        }
+
+        result[position] = item;
+
+        for(int i = position; i < arr.length; i++){
+            result[i + 1] = arr[i];
+        }
+
+        return  result;
+
+    }
+
+    /** Reverse the items in arr.
+     * Destructively.
+     */
+    public static void reverse(int[] arr){
+        for(int i = 0; i < arr.length/2; i++){
+            int end = arr.length - i - 1;
+            int temp = arr[i];
+            arr[i] = arr[end];
+            arr[end] = temp;
+        }
+    }
+
+    /** Replaces the number at index i with arr[i] copies of itself.
+     * Eg: [3,2,1] --> [3,3,3,2,2,1]
+     * Non-destructive.
+     */
+    public static int[] replicate(int[] arr){
+        int total = 0;
+        for(int item: arr){
+            total += item;
+        }
+
+        int[] result = new int[total];
+        int i = 0;
+        for(int item:arr){
+            for(int counter = 0; counter < item; counter++){
+                result[i] = arr[item];
+                i++;
+            }
+        }
+
+        return result;
     }
 }
